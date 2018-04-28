@@ -26,13 +26,13 @@ public class PainelCRUDGenerico extends javax.swing.JPanel {
 	/**
      * Creates new form PainelGenerico
      */
-    JPanel paiTopo = new JPanel();
-    JPanel paiModulo = new JPanel();
-    JPanel paiPesquisa = new JPanel();
-    JPanel paiFormulario = new JPanel();
-    JPanel paiTabela = new JPanel();
-    JPanel paiBotoes = new JPanel();
-    JPanel paiCentral = new JPanel();
+    protected JPanel paiTopo = new JPanel();
+    protected JPanel paiModulo = new JPanel();
+    protected JPanel paiPesquisa = new JPanel();
+    protected JPanel paiFormulario = new JPanel();
+    protected JPanel paiTabela = new JPanel();
+    protected JPanel paiBotoes = new JPanel();
+    protected JPanel paiCentral = new JPanel();
     
     public PainelCRUDGenerico() {
         
