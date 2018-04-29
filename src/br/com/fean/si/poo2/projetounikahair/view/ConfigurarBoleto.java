@@ -41,7 +41,7 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 	// Componentes de Pesquisa
 
 	private JLabel labPesquisaCodigoBanco = new JLabel("Pesquisar pelo Código do Banco: ");
-	private JTextField texPesquisaCodigoBanco = new JTextField(20);
+	private JTextField texPesquisaCodigoBanco = new JTextField(50);
 	private JButton botPesquisaCodigoBanco = new JButton("Pesquisar");
 
 
