@@ -30,6 +30,7 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 	//Componentes do Formulário
 
 	private JTextField texCodigoBanco = new JTextField();
+	private JTextField texNomeBanco = new JTextField();
 	private JTextField texNumeroConta = new JTextField();
 	private JTextField texMensagemCliente = new JTextField();
 
@@ -40,9 +41,9 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 
 	// Componentes de Pesquisa
 
-	private JLabel labPesquisaCodigoBanco = new JLabel("Pesquisar pelo Código do Banco: ");
-	private JTextField texPesquisaCodigoBanco = new JTextField(50);
-	private JButton botPesquisaCodigoBanco = new JButton("Pesquisar");
+	private JLabel labPesquisaNomeBanco = new JLabel("Pesquisar pelo Nome do Banco: ");
+	private JTextField texPesquisaNomeBanco = new JTextField(50);
+	private JButton botPesquisaNomeBanco = new JButton("Pesquisar");
 
 
 	public ConfigurarBoleto () {
@@ -50,9 +51,9 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 		paiModulo.add(new Label("Configurar Boleto"));
 
 		//Painel de Pesquisa
-		paiPesquisa.add(labPesquisaCodigoBanco);
-		paiPesquisa.add(texPesquisaCodigoBanco);
-		paiPesquisa.add(botPesquisaCodigoBanco);
+		paiPesquisa.add(labPesquisaNomeBanco);
+		paiPesquisa.add(texPesquisaNomeBanco);
+		paiPesquisa.add(botPesquisaNomeBanco);
 
 		//Painel da Tabela
 		setColunasTabela();
@@ -63,6 +64,11 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 		paiFormulario.add(codigoBanco);
 		codigoBanco.setLabelFor(texCodigoBanco);
 		paiFormulario.add(texCodigoBanco);
+		
+		JLabel nomeBanco = new JLabel ("Nome do Banco: ");
+		paiFormulario.add(nomeBanco);
+		codigoBanco.setLabelFor(texNomeBanco);
+		paiFormulario.add(texNomeBanco);		
 		
 		JLabel numeroConta = new JLabel ("Número da Conta: ");
 		paiFormulario.add(numeroConta);
@@ -76,7 +82,7 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 		
 		//Lay out the panel.
 		SpringUtilities.makeCompactGrid(paiFormulario,
-		3, 2, //rows, cols
+		4, 2, //rows, cols
 		6, 6, //initX, initY
 		6, 6); //xPad, yPad
 
@@ -92,6 +98,7 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 
 	public void setColunasTabela(){
 		modelo.addColumn("Código do Banco");
+		modelo.addColumn("Nome do Banco");
 		modelo.addColumn("Numero da Conta");
 		modelo.addColumn("Mensagem ao Cliente");
 	}
