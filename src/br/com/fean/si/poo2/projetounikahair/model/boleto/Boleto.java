@@ -1,4 +1,4 @@
-package br.com.fean.si.poo2.projetounikahair.model;
+package br.com.fean.si.poo2.projetounikahair.model.boleto;
 
 public class Boleto {
 	

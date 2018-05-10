@@ -1,4 +1,4 @@
-package br.com.fean.si.poo2.projetounikahair.view;
+package br.com.fean.si.poo2.projetounikahair.view.boleto;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
