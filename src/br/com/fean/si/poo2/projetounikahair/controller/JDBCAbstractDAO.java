@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public abstract class JDBCAbstractDAO {
 
 	private static final String DRIVER_JDBC = "com.mysql.jdbc.Driver";
-	private static final String URL_JDBC = "jdbc:mysql://localhost:3306/UNIKA_HAIR";
+	private static final String URL_JDBC = "jdbc:mysql://localhost:3306/UNIKA_HAIR?autoReconnect=true&useSSL=false";
 	private static final String USER_JDBC = "root";
 	private static final String PASSWORD_JDBC = "root";
 

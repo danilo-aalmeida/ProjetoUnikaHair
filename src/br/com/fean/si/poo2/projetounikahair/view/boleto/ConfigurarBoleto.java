@@ -10,8 +10,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import br.com.fean.si.poo2.projetounikahair.controller.DAOException;
+import br.com.fean.si.poo2.projetounikahair.controller.boleto.JDBCBoletoDAO;
 import br.com.fean.si.poo2.projetounikahair.exemplos.PainelCRUDGenerico;
 import br.com.fean.si.poo2.projetounikahair.exemplos.SpringUtilities;
+import br.com.fean.si.poo2.projetounikahair.model.boleto.Boleto;
 
 
 public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListener{
@@ -44,9 +47,10 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 	private JLabel labPesquisaNomeBanco = new JLabel("Pesquisar pelo Nome do Banco: ");
 	private JTextField texPesquisaNomeBanco = new JTextField(50);
 	private JButton botPesquisaNomeBanco = new JButton("Pesquisar");
+	
+	private JDBCBoletoDAO jdbcBoleto = new JDBCBoletoDAO();
 
-
-	public ConfigurarBoleto () {
+	public ConfigurarBoleto () throws DAOException {
 		//Painel que vai o Rotulo da Funcionalidade
 		paiModulo.add(new Label("Configurar Boleto"));
 
@@ -58,6 +62,7 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 		//Painel da Tabela
 		setColunasTabela();
 		paiTabela.add(scroll);
+		modelo  = jdbcBoleto.listarTodosBoletos();
 		
 		//Painel do Formulario
 		JLabel codigoBanco = new JLabel ("Código do Banco: ");
@@ -92,6 +97,9 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 		paiBotoes.add(botSalvar);
 		paiBotoes.add(botCancelar);
 		
+		botPesquisaNomeBanco.addActionListener(this);
+		botSalvar.addActionListener(this);
+		modelo  = jdbcBoleto.listarTodosBoletos();
 		
 		
 	}
@@ -103,9 +111,31 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 		modelo.addColumn("Mensagem ao Cliente");
 	}
 	
+	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent ae) {
+		if (ae.getSource().equals(botSalvar)) {
+			Boleto novoBoleto = new Boleto(Integer.parseInt(texCodigoBanco.getText()),
+					texNomeBanco.getText(),
+					Integer.parseInt(texNumeroConta.getText()),
+					texMensagemCliente.getText());
+			try {
+				jdbcBoleto.cadastrarNovoBoleto(novoBoleto);
+				jdbcBoleto.listarTodosBoletos();
+			} catch (DAOException e) {
+				
+				e.printStackTrace();
+			}
+			
+		} else if (ae.getSource().equals(botPesquisaNomeBanco)) {
+			try {
+				jdbcBoleto.listarBoletosPorNome(texPesquisaNomeBanco.getText());
+			} catch (DAOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 
 	}
 

@@ -36,5 +36,4 @@ public class Boleto {
 	public void setNomeBanco(String nomeBanco) {
 		this.nomeBanco = nomeBanco;
 	}
-
 }

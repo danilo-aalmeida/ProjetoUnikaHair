@@ -1,15 +1,17 @@
 package br.com.fean.si.poo2.projetounikahair.main;
 
-import java.awt.Container;
-import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+
+import java.awt.Container;
+
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import br.com.fean.si.poo2.projetounikahair.view.boleto.ConfigurarBoleto;
 
 
-public class Janela {
-      public static void main(String[] args) {
+public class JanelaDanilo {
+      public static void main(String[] args) throws Exception{
     JFrame janela = new JFrame("Unika Hair");
     janela.setDefaultCloseOperation(EXIT_ON_CLOSE);
     janela.setBounds(50,100,1000,700);
