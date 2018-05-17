@@ -5,10 +5,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import br.com.fean.si.poo2.projetounikahair.controller.DAOException;
 import br.com.fean.si.poo2.projetounikahair.controller.JDBCAbstractDAO;
@@ -41,15 +41,14 @@ public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 	}
 
 
-	public DefaultTableModel listarBoletosPorNome (String nomeBancoPesquisado) throws DAOException{
+	public List<Boleto> listarBoletosPorNome (String nomeBancoPesquisado) throws DAOException{
 		String selectSQL = "SELECT COD_BANCO,NOME_BANCO, NUMERO_CONTA, MENSAGEM_CLIENTE FROM BOLETOS WHERE UPPER(NOME_BANCO) LIKE (UPPER('%" + nomeBancoPesquisado + "%'))";
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		JTable tabTabela = new JTable ();
-		DefaultTableModel modeloPreenchido = (DefaultTableModel) tabTabela.getModel();
-		modeloPreenchido.setRowCount(0);
+		List<Boleto> listaBoletosPesquisados = new ArrayList<Boleto>();
+		
 		
 		try {
 			connection = getConnection();
@@ -61,8 +60,7 @@ public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 				String nomeBanco = rs.getString("NOME_BANCO");
 				Integer numeroConta = rs.getInt("NUMERO_CONTA");
 				String mensagemCliente = rs.getString("MENSAGEM_CLIENTE");
-				modeloPreenchido.addRow(new String [] {codigoBanco.toString(), nomeBanco,numeroConta.toString(),mensagemCliente});
-				//listaBoletos.add(new Boleto (codigoBanco, nomeBanco,numeroConta,mensagemCliente));
+				listaBoletosPesquisados.add(new Boleto (codigoBanco, nomeBanco,numeroConta,mensagemCliente));
 			}
 
 		} catch (SQLException sqle) {
@@ -74,19 +72,18 @@ public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 			close(pstmt);
 			close(rs);
 		}
-		return modeloPreenchido;
+		return listaBoletosPesquisados;
 	}
 
-	public DefaultTableModel listarTodosBoletos () throws DAOException {
+	public List<Boleto> listarTodosBoletos () throws DAOException {
 		String selectSQL = "SELECT COD_BANCO,NOME_BANCO, NUMERO_CONTA, MENSAGEM_CLIENTE FROM BOLETOS ORDER BY NOME_BANCO ASC";
 
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
-		JTable tabTabela = new JTable ();
-		DefaultTableModel modeloPreenchido = (DefaultTableModel) tabTabela.getModel();
-		modeloPreenchido.setRowCount(0);
+		
+		List<Boleto> listaBoletos = new ArrayList<Boleto>();
+		
 		
 		try {
 			connection = getConnection();
@@ -98,8 +95,7 @@ public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 				String nomeBanco = rs.getString("NOME_BANCO");
 				Integer numeroConta = rs.getInt("NUMERO_CONTA");
 				String mensagemCliente = rs.getString("MENSAGEM_CLIENTE");
-				modeloPreenchido.addRow(new String [] {codigoBanco.toString(), nomeBanco,numeroConta.toString(),mensagemCliente});
-				//listaBoletos.add(new Boleto (codigoBanco, nomeBanco,numeroConta,mensagemCliente));
+				listaBoletos.add(new Boleto (codigoBanco, nomeBanco,numeroConta,mensagemCliente));
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -110,7 +106,7 @@ public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 			close(pstmt);
 			close(rs);
 		}
-		return modeloPreenchido;
+		return listaBoletos;
 	}
 
 }

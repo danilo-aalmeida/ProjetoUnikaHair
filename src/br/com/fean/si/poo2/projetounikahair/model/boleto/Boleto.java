@@ -8,10 +8,13 @@ public class Boleto {
 	private String mensagemCliente;
 	
 	
-	public Boleto(Integer codigoBanco2, String nomeBanco2, Integer numeroConta2, String mensagemCliente2) {
-		
-
+	public Boleto(Integer codigoBanco, String nomeBanco, Integer numeroConta, String mensagemCliente) {
+		this.codigoBanco = codigoBanco;
+		this.nomeBanco = nomeBanco;
+		this.numeroConta = numeroConta;
+		this.mensagemCliente = mensagemCliente;
 	}
+	
 	public Integer getCodigoBanco() {
 		return codigoBanco;
 	}
