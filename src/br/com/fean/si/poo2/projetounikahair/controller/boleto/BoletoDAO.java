@@ -10,6 +10,8 @@ public interface BoletoDAO {
 	public void cadastrarNovoBoleto (Boleto boleto) throws DAOException;
 	public List<Boleto> listarBoletosPorNome (String nomeBancoPesquisado) throws DAOException;
 	public List<Boleto> listarTodosBoletos() throws DAOException;
-
+	public void editarBoleto(Boleto boleto, int codigoSelecionado) throws DAOException;
+	public void apagarBoleto(int codigoSelecionado) throws DAOException;
+	
 
 }
