@@ -62,19 +62,33 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 	private JDBCBoletoDAO jdbcBoleto = new JDBCBoletoDAO();
 
 	public ConfigurarBoleto () throws DAOException {
+		setNomeModulo();
+		setPainelDePesquisa();
+		setPainelDaTabela();
+		setPainelDoFormulario();
+		setPainelDeBotoes();
+		
+	}
+		
+	public void setNomeModulo () {
 		//Painel que vai o Rotulo da Funcionalidade
 		paiModulo.add(new Label("Configurar Boleto"));
-
+	}
+	
+	public void setPainelDePesquisa () {
 		//Painel de Pesquisa
 		paiPesquisa.add(labPesquisaNomeBanco);
 		paiPesquisa.add(texPesquisaNomeBanco);
 		paiPesquisa.add(botPesquisaNomeBanco);
-
+	}
+	
+	public void setPainelDaTabela() {
 		//Painel da Tabela
 		setColunasTabela();
 		paiTabela.add(scroll);
-
-
+	}
+	
+	public void setPainelDoFormulario() {
 		//Painel do Formulario
 		JLabel codigoBanco = new JLabel ("Código do Banco: ");
 		paiFormulario.add(codigoBanco);
@@ -103,7 +117,9 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 				6, 6); //xPad, yPad
 
 		paiFormulario.setOpaque(true); //content panes must be opaque
-
+	}
+	
+	public void setPainelDeBotoes() throws DAOException {
 		//Painel de Botões
 		paiBotoes.add(botNovo);
 		paiBotoes.add(botSalvar);
@@ -122,7 +138,7 @@ public class ConfigurarBoleto extends PainelCRUDGenerico implements ActionListen
 
 			@SuppressWarnings("unused")
 			private int coluna;
-
+		
 			@Override
 			public void mouseClicked (MouseEvent e) {
 				linha = tabTabela.getSelectedRow();
