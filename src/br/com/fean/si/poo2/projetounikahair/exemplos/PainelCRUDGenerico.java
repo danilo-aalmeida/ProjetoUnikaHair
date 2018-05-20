@@ -39,8 +39,8 @@ public class PainelCRUDGenerico extends javax.swing.JPanel {
         initComponents();
         setLayout(new BorderLayout());
         //BORDER NORTE
-        paiModulo.setBackground(Color.yellow);
-        paiPesquisa.setBackground(Color.green);
+        //paiModulo.setBackground(Color.blue);
+        paiPesquisa.setBackground(Color.blue);
         paiPesquisa.setLayout(new FlowLayout(FlowLayout.RIGHT));
         paiTopo.setLayout(new BoxLayout(paiTopo, BoxLayout.Y_AXIS));
         paiTopo.add(paiModulo);
@@ -50,7 +50,7 @@ public class PainelCRUDGenerico extends javax.swing.JPanel {
         //BORDER CENTRO
         paiTabela.setLayout(new FlowLayout());        
         paiFormulario.setLayout(new SpringLayout());
-        paiFormulario.setBackground(Color.RED);
+        paiFormulario.setBackground(Color.blue);
         paiCentral.setLayout(new BoxLayout(paiCentral, BoxLayout.Y_AXIS));
         paiCentral.add(paiTabela);
         paiCentral.add(paiFormulario);

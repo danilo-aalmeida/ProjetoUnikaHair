@@ -1,9 +1,10 @@
-package br.com.fean.si.poo2.projetounikahair.exemplos;
+package br.com.fean.si.poo2.projetounikahair.view;
 
 import java.awt.Container;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPanel;
+import br.com.fean.si.poo2.projetounikahair.exemplos.PainelCRUDExemplo;
 
 
 public class Janela {
@@ -19,7 +20,7 @@ public class Janela {
     //Lay out the panel.
         
 
-    //janela.pack();
+    //janela.pack();X
     janela.setVisible(true);
   }
 

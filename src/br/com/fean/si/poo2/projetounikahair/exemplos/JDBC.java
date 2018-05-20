@@ -1,37 +1,60 @@
 package br.com.fean.si.poo2.projetounikahair.exemplos;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author jordan
- */
-public class JDBC {
+ class JDBC {
 
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		// TODO code application logic here
-		//insert into teste (nome) values ('testando');
-		Class.forName ("com.mysql.jdbc.Driver");
-		Connection con =DriverManager.getConnection ("jdbc:mysql://localhost:3306/teste?user=root&password=root");
+    
+    public JDBC(){
+        retornar();
+    }
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        // TODO code application logic here
+        //insert into teste (nome) values ('testando');
+        new JDBC();
 
-		PreparedStatement ps = con.prepareStatement("INSERT INTO teste (nome) VALUES (?)"); 
-		ps.setString(1,"joao"); 
-		ps.execute ();
-		JOptionPane.showMessageDialog(null,"dado inserido");
+    }
+    /**
+     * 
+     */
+    public void retornar(){
+        try {
+            Class.forName ("com.mysql.jdbc.Driver");
+            Connection con =DriverManager.getConnection ("jdbc:mysql://localhost:3306/teste?useSSL=false","root","");
 
-	}
+            PreparedStatement ps =  con.prepareStatement("select * from promocao ORDER BY NOME ASC"); 	
+            ResultSet rs = ps.executeQuery ();
+            while (rs.next()){
+                JOptionPane.showMessageDialog(null,"nome: "+rs.getString("nome") + " Descricao: "+rs.getString("descricao"));
+            }
+                
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"erro "+e);
+        }
+        
+    }
+    public void inserir(){
+        try {
+            Class.forName ("com.mysql.jdbc.Driver");
+            Connection con =DriverManager.getConnection ("jdbc:mysql://localhost:3306/teste","root","");
 
+            PreparedStatement ps = con.prepareStatement("INSERT INTO promocao (nome,descricao) VALUES (?,?)"); 
+    		ps.setString(1,"joao"); 
+    		ps.setString(2,"descricao");
+    		ps.execute ();
+            JOptionPane.showMessageDialog(null,"dado inserido");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"erro"+e);
+        }
+        
+    }
+    
 }
