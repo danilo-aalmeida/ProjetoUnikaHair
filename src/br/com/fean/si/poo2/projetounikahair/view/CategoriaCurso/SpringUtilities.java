@@ -1,4 +1,4 @@
-package br.com.fean.si.poo2.projetounikahair.exemplos;
+package br.com.fean.si.poo2.projetounikahair.view;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
