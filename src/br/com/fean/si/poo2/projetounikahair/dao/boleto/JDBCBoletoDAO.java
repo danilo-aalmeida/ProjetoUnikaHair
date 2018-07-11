@@ -1,5 +1,4 @@
-package br.com.fean.si.poo2.projetounikahair.controller.boleto;
-
+package br.com.fean.si.poo2.projetounikahair.dao.boleto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,20 +6,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 
-import br.com.fean.si.poo2.projetounikahair.controller.DAOException;
-import br.com.fean.si.poo2.projetounikahair.controller.JDBCAbstractDAO;
+import br.com.fean.si.poo2.projetounikahair.dao.DAOException;
+import br.com.fean.si.poo2.projetounikahair.dao.JDBCAbstractDAO;
 import br.com.fean.si.poo2.projetounikahair.model.boleto.Boleto;
 
 public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 
-	public void cadastrarNovoBoleto(Boleto boleto) throws DAOException {
-		// TODO Auto-generated method stub
-		String insertSQL = "INSERT INTO BOLETOS (COD_BANCO,NOME_BANCO, NUMERO_CONTA,MENSAGEM_CLIENTE) VALUE (?,?,?,?);";
+	public String cadastrarNovoBoleto(Boleto boleto) throws DAOException {
+
+		String insertSQL = "INSERT INTO BOLETO (COD_BANCO,NOME_BANCO, NUMERO_CONTA,MENSAGEM_CLIENTE) VALUE (?,?,?,?);";
 		Connection connection = null;
 		PreparedStatement pstmt = null;
+		String retorno = "Boleto cadastrado com sucesso";
 
 		try {
 			connection = getConnection();
@@ -30,21 +29,23 @@ public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 			pstmt.setInt(3, boleto.getNumeroConta());
 			pstmt.setString(4, boleto.getMensagemCliente());
 			pstmt.executeUpdate();
-			JOptionPane.showMessageDialog(null, "Boleto cadastrado com sucesso");
+			
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro ao cadastrar novo boleto");
+			retorno = "Erro ao cadastrar novo boleto " + sqle;
 		} finally {
 			close (pstmt);
 			close (connection);
 		}
+		return retorno;
 	}
 
-	public void editarBoleto(Boleto boleto, int codigoSelecionado) throws DAOException {
-		// TODO Auto-generated method stub
-		String insertSQL = "UPDATE BOLETOS SET COD_BANCO=?,NOME_BANCO=?, NUMERO_CONTA=?,MENSAGEM_CLIENTE=? WHERE COD_BANCO=?";
+	public String editarBoleto(Boleto boleto, int codigoSelecionado) throws DAOException {
+		
+		String insertSQL = "UPDATE BOLETO SET COD_BANCO=?,NOME_BANCO=?, NUMERO_CONTA=?,MENSAGEM_CLIENTE=? WHERE COD_BANCO=?";
 		Connection connection = null;
 		PreparedStatement pstmt = null;
+		String retorno = "Boleto atualizado com sucesso";
 
 		try {
 			connection = getConnection();
@@ -55,46 +56,47 @@ public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 			pstmt.setString(4, boleto.getMensagemCliente());
 			pstmt.setInt(5, codigoSelecionado);
 			pstmt.executeUpdate();
-			JOptionPane.showMessageDialog(null, "Boleto atualizado com sucesso");
+
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro ao atualizar boleto");
+			retorno =  "Erro ao atualizar boleto " + sqle;
 		} finally {
 			close (pstmt);
 			close (connection);
 		}
+		return retorno;
 	}
 
-	public void apagarBoleto(int codigoSelecionado) throws DAOException {
-		// TODO Auto-generated method stub
-		String insertSQL = "DELETE FROM BOLETOS WHERE COD_BANCO=?";
+	public String apagarBoleto(int codigoSelecionado) throws DAOException {
+		
+		String insertSQL = "DELETE FROM BOLETO WHERE COD_BANCO=?";
 		Connection connection = null;
 		PreparedStatement pstmt = null;
+		String retorno = "Boleto apagado com sucesso";
 
 		try {
 			connection = getConnection();
 			pstmt = connection.prepareStatement(insertSQL);
 			pstmt.setInt(1, codigoSelecionado);
 			pstmt.executeUpdate();
-			JOptionPane.showMessageDialog(null, "Boleto apagado com sucesso");
+			
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro ao apagar boleto");
+			 retorno = "Erro ao apagar boleto " + sqle;
 		} finally {
 			close (pstmt);
 			close (connection);
 		}
+		return retorno;
 	}
 
 
 	public List<Boleto> listarBoletosPorNome (String nomeBancoPesquisado) throws DAOException{
-		String selectSQL = "SELECT COD_BANCO,NOME_BANCO, NUMERO_CONTA, MENSAGEM_CLIENTE FROM BOLETOS WHERE UPPER(NOME_BANCO) LIKE (UPPER('%" + nomeBancoPesquisado + "%'))";
+		String selectSQL = "SELECT COD_BANCO,NOME_BANCO, NUMERO_CONTA, MENSAGEM_CLIENTE FROM BOLETO WHERE UPPER(NOME_BANCO) LIKE (UPPER('%" + nomeBancoPesquisado + "%'))";
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
 		List<Boleto> listaBoletosPesquisados = new ArrayList<Boleto>();
-
 
 		try {
 			connection = getConnection();
@@ -122,14 +124,12 @@ public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 	}
 
 	public List<Boleto> listarTodosBoletos () throws DAOException {
-		String selectSQL = "SELECT COD_BANCO,NOME_BANCO, NUMERO_CONTA, MENSAGEM_CLIENTE FROM BOLETOS ORDER BY NOME_BANCO ASC";
+		String selectSQL = "SELECT COD_BANCO,NOME_BANCO, NUMERO_CONTA, MENSAGEM_CLIENTE FROM BOLETO ORDER BY NOME_BANCO ASC";
 
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
 		List<Boleto> listaBoletos = new ArrayList<Boleto>();
-
 
 		try {
 			connection = getConnection();
@@ -154,6 +154,4 @@ public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 		}
 		return listaBoletos;
 	}
-
 }
-

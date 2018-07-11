@@ -1,4 +1,4 @@
-package br.com.fean.si.poo2.projetounikahair.controller;
+package br.com.fean.si.poo2.projetounikahair.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
