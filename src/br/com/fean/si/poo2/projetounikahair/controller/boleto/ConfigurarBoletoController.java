@@ -9,9 +9,9 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import br.com.fean.si.poo2.projetounikahair.dao.DAOException;
 import br.com.fean.si.poo2.projetounikahair.model.boleto.Boleto;
 import br.com.fean.si.poo2.projetounikahair.service.boleto.ConfigurarBoletoService;
+import br.com.fean.si.poo2.projetounikahair.util.DAOException;
 import br.com.fean.si.poo2.projetounikahair.view.boleto.PainelConfigurarBoleto;
 
 public class ConfigurarBoletoController implements ActionListener{

@@ -9,8 +9,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import br.com.fean.si.poo2.projetounikahair.exemplos.PainelCRUDGenerico;
-import br.com.fean.si.poo2.projetounikahair.exemplos.SpringUtilities;
+import br.com.fean.si.poo2.projetounikahair.view.PainelCRUDGenerico;
+import br.com.fean.si.poo2.projetounikahair.view.SpringUtilities;
 
 /**
 *

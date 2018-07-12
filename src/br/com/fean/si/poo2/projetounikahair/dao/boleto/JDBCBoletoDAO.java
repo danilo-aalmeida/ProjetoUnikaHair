@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-import br.com.fean.si.poo2.projetounikahair.dao.DAOException;
-import br.com.fean.si.poo2.projetounikahair.dao.JDBCAbstractDAO;
 import br.com.fean.si.poo2.projetounikahair.model.boleto.Boleto;
+import br.com.fean.si.poo2.projetounikahair.util.DAOException;
+import br.com.fean.si.poo2.projetounikahair.util.JDBCAbstractDAO;
 
 public class JDBCBoletoDAO extends JDBCAbstractDAO implements BoletoDAO {
 

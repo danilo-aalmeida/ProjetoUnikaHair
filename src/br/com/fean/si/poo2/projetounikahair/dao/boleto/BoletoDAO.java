@@ -2,8 +2,8 @@ package br.com.fean.si.poo2.projetounikahair.dao.boleto;
 
 import java.util.List;
 
-import br.com.fean.si.poo2.projetounikahair.dao.DAOException;
 import br.com.fean.si.poo2.projetounikahair.model.boleto.Boleto;
+import br.com.fean.si.poo2.projetounikahair.util.DAOException;
 
 public interface BoletoDAO {
 

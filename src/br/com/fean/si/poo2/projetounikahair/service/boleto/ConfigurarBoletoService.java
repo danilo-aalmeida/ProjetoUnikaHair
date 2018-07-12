@@ -2,9 +2,9 @@ package br.com.fean.si.poo2.projetounikahair.service.boleto;
 
 import java.util.List;
 
-import br.com.fean.si.poo2.projetounikahair.dao.DAOException;
 import br.com.fean.si.poo2.projetounikahair.dao.boleto.JDBCBoletoDAO;
 import br.com.fean.si.poo2.projetounikahair.model.boleto.Boleto;
+import br.com.fean.si.poo2.projetounikahair.util.DAOException;
 
 public class ConfigurarBoletoService {
 	JDBCBoletoDAO jdbcBoletoDAO = new JDBCBoletoDAO();

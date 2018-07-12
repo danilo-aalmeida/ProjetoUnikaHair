@@ -22,6 +22,7 @@ public class Produto {
 		this.marca = marca;
 		this.categoriaProduto = categoriaProduto;
 	}
+	
 	public Integer getCodigoProduto() {
 		return codigoProduto;
 	}

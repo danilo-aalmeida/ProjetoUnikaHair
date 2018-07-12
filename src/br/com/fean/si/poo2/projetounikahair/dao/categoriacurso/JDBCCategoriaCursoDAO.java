@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import br.com.fean.si.poo2.projetounikahair.dao.JDBCAbstractDAO;
 import br.com.fean.si.poo2.projetounikahair.model.categoriacurso.CategoriaCurso;
+import br.com.fean.si.poo2.projetounikahair.util.JDBCAbstractDAO;
 
 public class JDBCCategoriaCursoDAO extends JDBCAbstractDAO implements CategoriaCursoDAO {
 

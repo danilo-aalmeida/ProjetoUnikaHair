@@ -4,17 +4,20 @@ import javax.swing.JOptionPane;
 
 import br.com.fean.si.poo2.projetounikahair.controller.boleto.ConfigurarBoletoController;
 import br.com.fean.si.poo2.projetounikahair.controller.categoriacurso.CategoriaCursoController;
-import br.com.fean.si.poo2.projetounikahair.dao.DAOException;
+import br.com.fean.si.poo2.projetounikahair.controller.produto.ProdutoController;
+import br.com.fean.si.poo2.projetounikahair.util.DAOException;
 import br.com.fean.si.poo2.projetounikahair.view.boleto.JanelaConfigurarBoleto;
 import br.com.fean.si.poo2.projetounikahair.view.boleto.PainelConfigurarBoleto;
 import br.com.fean.si.poo2.projetounikahair.view.categoriacurso.JanelaCategoriaCurso;
 import br.com.fean.si.poo2.projetounikahair.view.categoriacurso.PainelCategoriaCurso;
+import br.com.fean.si.poo2.projetounikahair.view.produto.JanelaProduto;
+import br.com.fean.si.poo2.projetounikahair.view.produto.PainelProduto;
 
 public class PrincipalDanilo {
 
 	PainelConfigurarBoleto painelConfigurarBoleto = new PainelConfigurarBoleto();
 	PainelCategoriaCurso painelCategoriaCurso = new PainelCategoriaCurso();
-
+    PainelProduto painelProduto = new PainelProduto();
 
 	public static void main(String[] args) throws DAOException {
 
@@ -46,7 +49,8 @@ public class PrincipalDanilo {
 				JanelaCategoriaCurso janelaCategoriaCurso = new JanelaCategoriaCurso(painelCategoriaCurso);
 				CategoriaCursoController categoriaCursoController = new CategoriaCursoController(painelCategoriaCurso);
 			} else if (opcao == 3) {
-				JOptionPane.showMessageDialog(null, "Opção em andamento");
+				JanelaProduto janelaProduto = new JanelaProduto(painelProduto);
+				ProdutoController produtoController = new ProdutoController(painelProduto);
 			}else {
 				JOptionPane.showMessageDialog(null, "Opção inválida!");
 			}
