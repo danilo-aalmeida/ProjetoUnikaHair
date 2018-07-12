@@ -1,10 +1,29 @@
 package br.com.fean.si.poo2.projetounikahair.model.boleto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "boleto")
 public class Boleto {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Column(name = "COD_BANCO")
 	private Integer codigoBanco;
+	
+	@Column(name = "NOME_BANCO")
 	private String nomeBanco;
+	
+	@Column(name = "NUMERO_CONTA")
 	private Integer numeroConta;
+	
+	@Column(name = "MENSAGEM_CLIENTE")
 	private String mensagemCliente;
 	
 	

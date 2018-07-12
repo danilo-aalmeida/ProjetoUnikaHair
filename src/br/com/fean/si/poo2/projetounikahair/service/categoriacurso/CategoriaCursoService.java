@@ -2,15 +2,20 @@ package br.com.fean.si.poo2.projetounikahair.service.categoriacurso;
 
 import java.util.ArrayList;
 
-import br.com.fean.si.poo2.projetounikahair.dao.categoriacurso.JDBCCategoriaCursoDAO;
+import br.com.fean.si.poo2.projetounikahair.dao.categoriacurso.HIBERNATECategoriaCursoDAO;
 import br.com.fean.si.poo2.projetounikahair.model.categoriacurso.CategoriaCurso;
 
 public class CategoriaCursoService {
-    JDBCCategoriaCursoDAO categoriaCursoDAO = new JDBCCategoriaCursoDAO();
+    //JDBCCategoriaCursoDAO categoriaCursoDAO = new JDBCCategoriaCursoDAO();
+    HIBERNATECategoriaCursoDAO categoriaCursoDAO = new HIBERNATECategoriaCursoDAO();
+    
+    
+    
     public String inserir (String nome, String descricao){
         CategoriaCurso categoriaCurso= new CategoriaCurso(nome,  descricao);
         //implementar a regra de negócio aqui
         
+                    
         String retorno = categoriaCursoDAO.inserir(categoriaCurso);            
         
         return retorno;

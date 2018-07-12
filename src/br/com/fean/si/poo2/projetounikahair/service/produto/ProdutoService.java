@@ -2,19 +2,20 @@ package br.com.fean.si.poo2.projetounikahair.service.produto;
 
 import java.util.List;
 
-import br.com.fean.si.poo2.projetounikahair.dao.produto.JDBCProdutoDAO;
+import br.com.fean.si.poo2.projetounikahair.dao.produto.HIBERNATEProdutoDAO;
 import br.com.fean.si.poo2.projetounikahair.model.produto.Produto;
 import br.com.fean.si.poo2.projetounikahair.util.DAOException;
 
 public class ProdutoService {
-	JDBCProdutoDAO jdbcProdutoDAO = new JDBCProdutoDAO();
+	//JDBCProdutoDAO produtoDAO = new JDBCProdutoDAO();
+	HIBERNATEProdutoDAO produtoDAO = new HIBERNATEProdutoDAO();
 	
 	public String inserir (Integer codigoProduto, String nomeProduto, Double precoVenda, Integer estoqueMinimo,
 			Integer quantidadeEstoque, String marca, String categoriaProduto) throws DAOException {
 		
 		Produto novoProduto = new Produto(codigoProduto, nomeProduto, precoVenda, estoqueMinimo, quantidadeEstoque, marca, categoriaProduto);
 		
-		String retorno = jdbcProdutoDAO.cadastrarNovoProduto(novoProduto);
+		String retorno = produtoDAO.cadastrarNovoProduto(novoProduto);
 		
 		return retorno;
 		
@@ -24,7 +25,7 @@ public class ProdutoService {
 			Integer quantidadeEstoque, String marca, String categoriaProduto, Integer codigoSelecionado) throws DAOException {
 		Produto dadosProduto = new Produto(codigoProduto, nomeProduto, precoVenda, estoqueMinimo, quantidadeEstoque, marca, categoriaProduto);
 		
-		String retorno = jdbcProdutoDAO.editarProduto(dadosProduto, codigoSelecionado);
+		String retorno = produtoDAO.editarProduto(dadosProduto, codigoSelecionado);
 		
 		
 		
@@ -34,14 +35,14 @@ public class ProdutoService {
 	
 	public String apagar (Integer codigoSelecionado) throws DAOException {
 		
-		String retorno = jdbcProdutoDAO.apagarProduto(codigoSelecionado);
+		String retorno = produtoDAO.apagarProduto(codigoSelecionado);
 		return retorno;	
 		
 	}
 	
 	public List<Produto> listarPorNome (String nomePesquisado) throws DAOException{
 		
-	List<Produto> lista = jdbcProdutoDAO.listarProdutosPorNome(nomePesquisado);
+	List<Produto> lista = produtoDAO.listarProdutosPorNome(nomePesquisado);
 	
 	return lista;
 		
@@ -49,7 +50,7 @@ public class ProdutoService {
 
 	public List<Produto> listarTodos () throws DAOException{
 		
-	List<Produto> lista = jdbcProdutoDAO.listarTodosProdutos();
+	List<Produto> lista = produtoDAO.listarTodosProdutos();
 	
 	return lista;
 		
